@@ -1,11 +1,10 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the default readme for the NBAAnalyst.
 
-Things you may want to cover:
+Things I will eventually cover:
 
-* Ruby version
+* Ruby version - 4.0.0
 
 * System dependencies
 

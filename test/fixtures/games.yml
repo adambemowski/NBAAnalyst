@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 1
+  visiting_team: MyString
+  visiting_1st: 1
+  visiting_2nd: 1
+  visiting_3rd: 1
+  visiting_4th: 1
+  visiting_score: 1
+  visiting_moneyline: 1
+  home_team: MyString
+  home_1st: 1
+  home_2nd: 1
+  home_3rd: 1
+  home_4th: 1
+  home_score: 1
+  home_moneyline: 1
+  overunder_open: 1
+  overunder_close: 1
+  spread_open: 1
+  spread_close: 1
+  overunder_secondhalf: 1
+  spread_secondhalf: 1
+
+two:
+  date: 1
+  visiting_team: MyString
+  visiting_1st: 1
+  visiting_2nd: 1
+  visiting_3rd: 1
+  visiting_4th: 1
+  visiting_score: 1
+  visiting_moneyline: 1
+  home_team: MyString
+  home_1st: 1
+  home_2nd: 1
+  home_3rd: 1
+  home_4th: 1
+  home_score: 1
+  home_moneyline: 1
+  overunder_open: 1
+  overunder_close: 1
+  spread_open: 1
+  spread_close: 1
+  overunder_secondhalf: 1
+  spread_secondhalf: 1

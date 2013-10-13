@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131013054113) do
+ActiveRecord::Schema.define(version: 20131013072411) do
 
   create_table "games", force: true do |t|
     t.integer  "date"
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20131013054113) do
     t.integer  "home_4th"
     t.integer  "home_score"
     t.integer  "home_moneyline"
-    t.integer  "overunder_open"
-    t.integer  "overunder_close"
-    t.integer  "spread_open"
-    t.integer  "spread_close"
-    t.integer  "overunder_secondhalf"
-    t.integer  "spread_secondhalf"
+    t.decimal  "overunder_open"
+    t.decimal  "overunder_close"
+    t.decimal  "spread_open"
+    t.decimal  "spread_close"
+    t.decimal  "overunder_secondhalf"
+    t.decimal  "spread_secondhalf"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

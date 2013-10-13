@@ -1,3 +1,33 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id                   :integer          not null, primary key
+#  date                 :integer
+#  visiting_team        :string(255)
+#  visiting_1st         :integer
+#  visiting_2nd         :integer
+#  visiting_3rd         :integer
+#  visiting_4th         :integer
+#  visiting_score       :integer
+#  visiting_moneyline   :integer
+#  home_team            :string(255)
+#  home_1st             :integer
+#  home_2nd             :integer
+#  home_3rd             :integer
+#  home_4th             :integer
+#  home_score           :integer
+#  home_moneyline       :integer
+#  overunder_open       :decimal(, )
+#  overunder_close      :decimal(, )
+#  spread_open          :decimal(, )
+#  spread_close         :decimal(, )
+#  overunder_secondhalf :decimal(, )
+#  spread_secondhalf    :decimal(, )
+#  created_at           :datetime
+#  updated_at           :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
@@ -16,12 +46,12 @@ one:
   home_4th: 1
   home_score: 1
   home_moneyline: 1
-  overunder_open: 1
-  overunder_close: 1
-  spread_open: 1
-  spread_close: 1
-  overunder_secondhalf: 1
-  spread_secondhalf: 1
+  overunder_open: 9.99
+  overunder_close: 9.99
+  spread_open: 9.99
+  spread_close: 9.99
+  overunder_secondhalf: 9.99
+  spread_secondhalf: 9.99
 
 two:
   date: 1
@@ -39,9 +69,9 @@ two:
   home_4th: 1
   home_score: 1
   home_moneyline: 1
-  overunder_open: 1
-  overunder_close: 1
-  spread_open: 1
-  spread_close: 1
-  overunder_secondhalf: 1
-  spread_secondhalf: 1
+  overunder_open: 9.99
+  overunder_close: 9.99
+  spread_open: 9.99
+  spread_close: 9.99
+  overunder_secondhalf: 9.99
+  spread_secondhalf: 9.99

@@ -11,3 +11,64 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+	background-color: #222222;
+/*	background-image:
+	repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+	repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+	linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+	linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+	background-size: 70px 120px;	*/
+}
+
+label {
+  color: #F5F5F5;
+  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+label.first_label {
+  width: 280px;
+  float: left;
+  text-align: left;
+  margin-right: 0.5em;
+  display: block
+}
+
+fieldset {
+	width: 840px;
+}
+
+h1 {
+  color: #9C0606;
+}
+
+p {
+  color: #F5F5F5;	
+}
+
+select{
+  width: 9em;
+}
+
+/* Links */
+a:link {
+  color:#9C0606;
+  float: left;
+  margin-left: 0.5em;
+}      
+a:visited {
+  color:#9C0606;	
+  float: left;
+  margin-left: 0.5em;
+}  
+a:hover {
+  color:#9C0606;
+  float: left;
+  margin-left: 0.5em;
+}  
+a:active {
+  color:#9C0606;
+  float: left;
+  margin-left: 0.5em;
+}

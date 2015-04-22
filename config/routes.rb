@@ -1,7 +1,9 @@
 NBAAnalyst::Application.routes.draw do
   
-  get "pages/home"
-  get "pages/about"
+  get  "pages/home"
+  get  "pages/about"
+  post "pages/analyze"
+  post "pages/home"
   
   root :to => 'pages#home'
   

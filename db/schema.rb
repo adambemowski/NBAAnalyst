@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131013072411) do
+ActiveRecord::Schema.define(version: 20150126020921) do
+
+  create_table "bets", force: true do |t|
+    t.string   "bet_type"
+    t.string   "bet_place"
+    t.integer  "range_money_line_from"
+    t.integer  "range_money_line_to"
+    t.integer  "range_over_under_from"
+    t.integer  "range_over_under_to"
+    t.integer  "range_spread_from"
+    t.integer  "range_spread_to"
+    t.integer  "win_percentage_from"
+    t.integer  "win_percentage_to"
+    t.integer  "win_percentage_games"
+    t.string   "win_percentage_place"
+    t.integer  "point_differential_from"
+    t.integer  "point_differential_to"
+    t.integer  "point_differential_games"
+    t.string   "point_differential_place"
+    t.integer  "timezones_traveled_from"
+    t.integer  "timezones_traveled_to"
+    t.integer  "timezones_traveled_games"
+    t.integer  "win_percentage"
+    t.integer  "return_per_bet"
+    t.integer  "number_of_games"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", force: true do |t|
     t.integer  "date"
@@ -37,6 +64,7 @@ ActiveRecord::Schema.define(version: 20131013072411) do
     t.decimal  "spread_secondhalf"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "proper_date"
   end
 
 end

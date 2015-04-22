@@ -1,2 +1,11 @@
-<h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
+<h1>Results:</h1>
+
+<p>
+BET $1000 ON <%= @bet.number_of_games %> GAMES
+<br>
+<br>
+WON <%= @bet.win_percentage %> PERCENT
+<br>
+<br>
+WITH A RETURN PER BET OF <%= @bet.return_per_bet %>
+</p>

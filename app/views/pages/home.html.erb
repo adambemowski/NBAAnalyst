@@ -1,2 +1,72 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>NBA Betting strategy analyzer</h1>
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<p> Pick options to bet on.  Incomplete or empty options will be ignored. </p>
+
+<%= form_for :bet_formula, url: 'pages/analyze', html: {class: 'panel'} do |f| %>
+<fieldset>	
+	<div class="field">
+		<%= f.label :bet_type, 'Bet $1000 on all' %>
+		<%= f.select :bet_type, Game::BET_TYPES %>
+		<%= f.label :bet_place, 'games for teams playing' %>
+		<%= f.select :bet_place, Game::BET_PLACES %>
+		<%= f.label :bet_ranges, 'with a range of:' %>	
+	</div>	<br />
+	<div class="field">
+		<%= f.label :range_money_line, '1) MoneyLine odds of' , class: 'first_label'%>
+		<%= f.select :range_money_line_from, Game::MONEY_LINE_RANGES %>
+		<%= f.label :range_money_line, 'to' %>
+		<%= f.select :range_money_line_to, Game::MONEY_LINE_RANGES %>
+	</div>
+	<div class="field">
+		<%= f.label :range_over_under, '2) Over under of', class: 'first_label' %>
+		<%= f.select :range_over_under_from, Game::OVER_UNDER_RANGES %>
+		<%= f.label :range_over_under, 'to' %>
+		<%= f.select :range_over_under_to, Game::OVER_UNDER_RANGES %>
+	</div>
+	<div class="field">
+		<%= f.label :range_spread, '3) Spread of', class: 'first_label' %>
+		<%= f.select :range_spread_from, Game::SPREAD_RANGES %>
+		<%= f.label :range_spread, 'to' %>
+		<%= f.select :range_spread_to, Game::SPREAD_RANGES %>
+	</div>
+	<div class="field">
+		<%= f.label :win_percentage, '4) Win % of', class: 'first_label' %>
+		<%= f.select :win_percentage_from, Game::WIN_PERCENTAGE_RANGES %>
+		<%= f.label :win_percentage, 'to' %>
+		<%= f.select :win_percentage_to, Game::WIN_PERCENTAGE_RANGES %>
+		<%= f.label :win_percentage, 'in the last' %>
+		<%= f.select :win_percentage_games, Game::LAST_X_RANGES %>
+		<%= f.label :win_percentage, 'games' %>
+		<%= f.select :win_percentage_place, Game::BET_PLACES %>
+	</div>
+	<div class="field">
+		<%= f.label :point_differential, '5) Point differential avg of', class: 'first_label' %>
+		<%= f.select :point_differential_from, Game::POINT_DIF_RANGES %>
+		<%= f.label :point_differential, 'to' %>
+		<%= f.select :point_differential_to, Game::POINT_DIF_RANGES %>
+		<%= f.label :point_differential, 'in the last' %>
+		<%= f.select :point_differential_games, Game::LAST_X_RANGES %>
+		<%= f.label :point_differential, 'games' %>
+		<%= f.select :point_differential_place, Game::BET_PLACES %>
+	</div>
+	<div class="field">
+		<%= f.label :timezones_traveled, '6) Total time zones crossed of', class: 'first_label' %>
+		<%= f.select :timezones_traveled_from, Game::LAST_X_RANGES %>
+		<%= f.label :timezones_traveled, 'to' %>
+		<%= f.select :timezones_traveled_to, Game::LAST_X_RANGES %>
+		<%= f.label :timezones_traveled, 'in the last' %>
+		<%= f.select :timezones_traveled_games, Game::DAYS_RANGES %>
+		<%= f.label :timezones_traveled, 'days' %>
+	</div>
+	<br />
+	<div class="buttons">
+	<%= f.submit 'Analyze'%>
+	</div>
+</fieldset>
+<% end %>
+
+

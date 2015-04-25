@@ -18,33 +18,147 @@ class Bet < ActiveRecord::Base
     #Add in all the home games to the mix
     if self.bet_place == 'any' || self.bet_place == 'home'
       conforming_games_home = all_games
-      conforming_games_home = filterRange(conforming_games_home, :home_moneyline, self.range_money_line_from, self.range_money_line_to)
+
+      # Moneyline
+      if !self.range_money_line_from.blank? && !self.range_money_line_to.blank?
+        conforming_games_home = filterRange(conforming_games_home, :home_moneyline, self.range_money_line_from, self.range_money_line_to)
+      end
+
+      # Over Under
+      if !self.range_over_under_from.blank? && !self.range_over_under_to.blank?
+        conforming_games_home = filterRange(conforming_games_home, :overunder_close, self.range_over_under_from, self.range_over_under_to)
+      end
+
+      # Spread
+      if !self.range_spread_from.blank? && !self.range_spread_to.blank?
+        conforming_games_home = filterRange(conforming_games_home, :spread_close, self.range_spread_from, self.range_spread_to)
+      end
 
       # Determine if the home moneyline games were a win or a loss
-      conforming_games_home.each do |g|
+      if self.bet_type == 'moneyline'
+        conforming_games_home.each do |g|
         if g.home_score > g.visiting_score
-          sum += win_payoff(g.home_moneyline, 1000)
-          wins += 1.0
-        else
-          sum -= 1000
+            sum += win_payoff(g.home_moneyline, 1000)
+            wins += 1.0
+          else
+            sum -= 1000
+          end
         end
+      elsif self.bet_type == 'over'
+        conforming_games_home.each do |g|
+          if g.home_score + g.visiting_score == g.overunder_close
+            # Tie nothing happens
+          elsif g.home_score + g.visiting_score > g.overunder_close
+            sum += win_payoff(-110, 1000)
+            wins += 1.0
+          else
+            sum -= 1000
+          end
+        end
+      elsif self.bet_type == 'under'
+        conforming_games_home.each do |g|
+          if g.home_score + g.visiting_score == g.overunder_close
+            # Tie nothing happens
+          elsif g.home_score + g.visiting_score < g.overunder_close
+            sum += win_payoff(-110, 1000)
+            wins += 1.0
+          else
+            sum -= 1000
+          end
+        end
+      elsif self.bet_type == 'spread'
+        conforming_games_home.each do |g|
+          actual_spread = g.home_score - g.visiting_score
+          if actual_spread.abs == g.spread_close
+            # Tie nothing happens
+          elsif g.home_moneyline < 0 && actual_spread > g.spread_close
+            # Favored and beat the spread
+            sum += win_payoff(-110, 1000)
+            wins += 1.0
+          elsif g.home_moneyline > 0 && actual_spread > -1*g.spread_close
+            # Underdog and beat spread
+            sum += win_payoff(-110, 1000)
+            wins += 1.0
+          else
+            # Lost
+            sum -= 1000
+          end
+        end                       
       end
+
     end
 
     #Add in all the away games to the mix
     if self.bet_place == 'any' || self.bet_place == 'away'
       conforming_games_away = all_games
-      conforming_games_away = filterRange(conforming_games_away, :visiting_moneyline, self.range_money_line_from, self.range_money_line_to)
+
+      # MoneyLine
+      if !self.range_money_line_from.blank? && !self.range_money_line_to.blank?
+        conforming_games_away = filterRange(conforming_games_away, :visiting_moneyline, self.range_money_line_from, self.range_money_line_to)
+      end
+
+      # Over Under
+      if !self.range_over_under_from.blank? && !self.range_over_under_to.blank?
+        conforming_games_away = filterRange(conforming_games_away, :overunder_close, self.range_over_under_from, self.range_over_under_to)
+      end
+
+      # Spread
+      if !self.range_spread_from.blank? && !self.range_spread_to.blank?
+        conforming_games_away = filterRange(conforming_games_away, :spread_close, self.range_spread_from, self.range_spread_to)
+      end
 
       # Determine if the home moneyline games were a win or a loss
-      conforming_games_away.each do |g|
-        if g.home_score < g.visiting_score
-          sum += win_payoff(g.home_moneyline, 1000)
-          wins += 1.0
-        else
-          sum -= 1000
+      if self.bet_type == 'moneyline'
+        conforming_games_away.each do |g|
+          if g.home_score < g.visiting_score
+            sum += win_payoff(g.visiting_moneyline, 1000)
+            wins += 1.0
+          else
+            sum -= 1000
+          end
         end
+      elsif self.bet_type == 'over'
+        conforming_games_away.each do |g|
+          if g.home_score + g.visiting_score == g.overunder_close
+            # Tie nothing happens
+          elsif g.home_score + g.visiting_score > g.overunder_close
+            sum += win_payoff(-110, 1000)
+            wins += 1.0
+          else
+            sum -= 1000
+          end
+        end
+      elsif self.bet_type == 'under'
+        conforming_games_away.each do |g|
+          if g.home_score + g.visiting_score == g.overunder_close
+            # Tie nothing happens
+          elsif g.home_score + g.visiting_score < g.overunder_close
+            sum += win_payoff(-110, 1000)
+            wins += 1.0
+          else
+            sum -= 1000
+          end
+        end
+      elsif self.bet_type == 'spread'
+        conforming_games_away.each do |g|
+          actual_spread = g.visiting_score - g.home_score
+          if actual_spread.abs == g.spread_close
+            # Tie nothing happens
+          elsif g.visiting_moneyline < 0 && actual_spread > g.spread_close
+            # Favored and beat the spread
+            sum += win_payoff(-110, 1000)
+            wins += 1.0
+          elsif g.visiting_moneyline > 0 && actual_spread > -1*g.spread_close
+            # Underdog and beat spread
+            sum += win_payoff(-110, 1000)
+            wins += 1.0
+          else
+            # Lost
+            sum -= 1000
+          end
+        end                       
       end
+
     end
 
     conforming_games = conforming_games_home + conforming_games_away

@@ -54,13 +54,28 @@
 		<%= f.select :point_differential_place, Game::BET_PLACES %>
 	</div>
 	<div class="field">
-		<%= f.label :timezones_traveled, '6) Total time zones crossed of', class: 'first_label' %>
-		<%= f.select :timezones_traveled_from, Game::LAST_X_RANGES %>
-		<%= f.label :timezones_traveled, 'to' %>
-		<%= f.select :timezones_traveled_to, Game::LAST_X_RANGES %>
-		<%= f.label :timezones_traveled, 'in the last' %>
-		<%= f.select :timezones_traveled_games, Game::DAYS_RANGES %>
-		<%= f.label :timezones_traveled, 'days' %>
+		<%= f.label :consecutive_games, '6) Consecutive games:', class: 'first_label' %>
+		<%= f.select :consecutive_games_from, Game::LAST_X_RANGES %>
+		<%= f.label :consecutive_games, 'to' %>
+		<%= f.select :consecutive_games_to, Game::LAST_X_RANGES %>
+		<%= f.label :consecutive_games, 'played' %>
+		<%= f.select :consecutive_games_place, Game::BET_PLACES %>
+	</div>
+	<div class="field">
+		<%= f.label :streak, '7) Streak:', class: 'first_label' %>
+		<%= f.select :streak_type, Game::WIN_TYPES %>
+		<%= f.label :streak, 'streak of' %>
+		<%= f.select :streak_from, Game::LAST_X_RANGES %>
+		<%= f.label :streak, 'to' %>
+		<%= f.select :streak_to, Game::LAST_X_RANGES %>
+		<%= f.label :streak, 'played' %>
+		<%= f.select :streak_place, Game::BET_PLACES %>
+	</div>
+	<div class="field">
+		<%= f.label :days_off, '8) Consecutive days off', class: 'first_label' %>
+		<%= f.select :days_off_from, Game::LAST_X_RANGES %>
+		<%= f.label :days_off, 'to' %>
+		<%= f.select :days_off_to, Game::LAST_X_RANGES %>
 	</div>
 	<br />
 	<div class="buttons">

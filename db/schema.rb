@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425222708) do
+ActiveRecord::Schema.define(version: 20150502045849) do
 
   create_table "bets", force: true do |t|
     t.string   "bet_type"
@@ -35,11 +35,10 @@ ActiveRecord::Schema.define(version: 20150425222708) do
     t.integer  "number_of_games"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "consecutive_games_to"
-    t.integer  "consecutive_games_from"
+    t.integer  "consecutive_games_amount"
+    t.integer  "consecutive_games_days"
     t.string   "consecutive_games_place"
-    t.integer  "days_off_to"
-    t.integer  "days_off_from"
+    t.integer  "days_off_amount"
     t.integer  "streak_to"
     t.integer  "streak_from"
     t.string   "streak_place"
